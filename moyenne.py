@@ -133,5 +133,43 @@ def moyenne_UE3():
     print(f"La moyenne de l'UE3 est", moy3)
 moyenne_UE3()
 
+#Version 4 - Graphique avec v2
+import matplotlib.pyplot as plt
+import numpy as np
+
+matieres = []
+coefficients_UE1 = [10, 10, 7, 7, 0, 5, 0, 6, 0, 5, 4, 2, 5, 5, 0, 20, 20, 0, 0, 0, 7]
+coefficients_UE2 = [4, 0, 2, 8, 6, 0, 0, 0, 0, 5, 5, 2, 9, 9, 3, 0, 0, 29, 0, 0, 7]
+coefficients_UE3 = [4, 0, 2, 0, 0, 5, 15, 6, 4, 5, 5, 2, 0, 0, 3, 0, 0, 0, 20, 20, 7]
+
+notes_etudiant = []
+
+for i in range(101,116):
+    matieres.append("R{}".format(i))
+for i in range(11,17):
+    matieres.append("SAE{}".format(i))
+
+for i in range(101,116):
+    notes_etudiant.append(float(input("Notes de R{}".format(i))))
+for i in range(11,17):
+    notes_etudiant.append(float(input("Notes de SAE{}".format(i))))
+
+def calculer_moyenne_ue(nom_ue, coefficients, notes):
+    somme_points = 0
+    somme_coefficients = 0
+    for i in range(len(notes)):
+        coeff = coefficients[i]
+        if coeff > 0:
+            somme_points += notes[i] * coeff
+            somme_coefficients += coeff
+    moyenne = somme_points / somme_coefficients
+    print("Moyenne de {} : {}".format(nom_ue, round(moyenne,3)))
+    
+M1 = calculer_moyenne_ue("UE1", coefficients_UE1, notes_etudiant)
+M2 = calculer_moyenne_ue("UE2", coefficients_UE2, notes_etudiant)
+M3 = calculer_moyenne_ue("UE3", coefficients_UE3, notes_etudiant)
+
+plt.bar(["UE1","UE2","UE3"],[M1,M2,M3])
+
 
 
