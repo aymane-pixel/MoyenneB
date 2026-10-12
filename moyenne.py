@@ -1,9 +1,4 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
+#Version1
 def Moyenne_UE1():
     som_1 = 0
     coe_1 = 0
@@ -57,17 +52,22 @@ def Moyenne_UE3():
 Moyenne_UE3()    
 
 
-# In[ ]:
-#Moyenne Liste
-matieres = ["R101", "R102", "R103", "SAE11", "SAE12"]
-coefficients_UE1 = [10, 10, 7, 20, 20]
-coefficients_UE2 = [4, 0, 2, 0, 0]
-coefficients_UE3 = [4, 0, 2, 0, 0]
+#Moyenne Liste - V2
+matieres = []
+coefficients_UE1 = [10, 10, 7, 7, 0, 5, 0, 6, 0, 5, 4, 2, 5, 5, 0, 20, 20, 0, 0, 0, 7]
+coefficients_UE2 = [4, 0, 2, 8, 6, 0, 0, 0, 0, 5, 5, 2, 9, 9, 3, 0, 0, 29, 0, 0, 7]
+coefficients_UE3 = [4, 0, 2, 0, 0, 5, 15, 6, 4, 5, 5, 2, 0, 0, 3, 0, 0, 0, 20, 20, 7]
+
 notes_etudiant = []
 
-for i in range(101,104):
+for i in range(101,116):
+    matieres.append("R{}".format(i))
+for i in range(11,17):
+    matieres.append("SAE{}".format(i))
+
+for i in range(101,116):
     notes_etudiant.append(float(input("Notes de R{}".format(i))))
-for i in range(11,13):
+for i in range(11,17):
     notes_etudiant.append(float(input("Notes de SAE{}".format(i))))
 
 def calculer_moyenne_ue(nom_ue, coefficients, notes):
@@ -79,7 +79,7 @@ def calculer_moyenne_ue(nom_ue, coefficients, notes):
             somme_points += notes[i] * coeff
             somme_coefficients += coeff
     moyenne = somme_points / somme_coefficients
-    print("Moyenne de {} : {}".format(nom_ue, round(moyenne,2)))
+    print("Moyenne de {} : {}".format(nom_ue, round(moyenne,3)))
     
 calculer_moyenne_ue("UE1", coefficients_UE1, notes_etudiant)
 calculer_moyenne_ue("UE2", coefficients_UE2, notes_etudiant)
