@@ -164,11 +164,17 @@ def calculer_moyenne_ue(nom_ue, coefficients, notes):
             somme_coefficients += coeff
     moyenne = somme_points / somme_coefficients
     print("Moyenne de {} : {}".format(nom_ue, round(moyenne,3)))
+    return moyenne
     
 M1 = calculer_moyenne_ue("UE1", coefficients_UE1, notes_etudiant)
 M2 = calculer_moyenne_ue("UE2", coefficients_UE2, notes_etudiant)
 M3 = calculer_moyenne_ue("UE3", coefficients_UE3, notes_etudiant)
 
+plt.bar(["UE1","UE2","UE3"],[M1,M2,M3])
+plt.title("Moyennes par UE")
+plt.ylabel("Moyenne /20")
+plt.axhline(10, color="red", linestyle="--")
+plt.show()
 plt.bar(["UE1","UE2","UE3"],[M1,M2,M3])
 
 
